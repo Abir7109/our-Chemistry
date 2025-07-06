@@ -1768,9 +1768,10 @@
  		
  		// Show the first message on page load
  		window.onload = showNextMessage;
- 		</script>
- 		
- 		<center><div>
+ 		</scrip>
+
+      <div>	
+ 		<center>
  		<style type="text/css">
  		/* Love Letter Box Styling */
  		.love-letter-box {
@@ -1786,14 +1787,13 @@
  		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
  		transition: transform 0.4s ease, box-shadow 0.3s ease;
  		}
- 		
  		.love-letter-box:hover {
  		transform: scale(1.1);
  		box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
  		}
  		
- 		/* Modal Styling */
- 		.modal {
+ 		/* Love Popup Styling */
+ 		.love-popup {
  		position: fixed;
  		top: 0; left: 0;
  		width: 100%; height: 100%;
@@ -1805,8 +1805,7 @@
  		justify-content: center;
  		align-items: center;
  		}
- 		
- 		.modal-content {
+ 		.love-popup-content {
  		background: #fff;
  		padding: 40px;
  		border-radius: 15px;
@@ -1820,20 +1819,16 @@
  		transition: transform 0.3s ease, opacity 0.3s ease;
  		position: relative;
  		}
- 		
- 		.modal-content h2 {
+ 		.love-popup-content h2 {
  		font-family: 'Great Vibes', cursive;
  		font-size: 32px;
  		color: #f39c12;
  		margin-bottom: 20px;
  		}
- 		
- 		.modal-content p {
- 		;
+ 		.love-popup-content p {
  		line-height: 1.6;
  		color: #333;
  		}
- 		
  		.close {
  		position: absolute;
  		top: 10px;
@@ -1842,27 +1837,24 @@
  		cursor: pointer;
  		color: #aaa;
  		}
- 		
  		.close:hover {
  		color: #e74c3c;
  		}
  		
- 		/* Checkbox Toggle */
- 		#modal-toggle:checked ~ .modal {
+ 		/* Toggle */
+ 		#popup-toggle:checked ~ .love-popup {
  		visibility: visible;
  		opacity: 1;
  		}
- 		
- 		#modal-toggle:checked ~ .modal .modal-content {
+ 		#popup-toggle:checked ~ .love-popup .love-popup-content {
  		transform: translateY(0);
  		opacity: 1;
  		}
- 		
- 		#modal-toggle {
+ 		#popup-toggle {
  		display: none;
  		}
  		
- 		/* Floating Hearts Animation */
+ 		/* Floating Hearts */
  		.hearts {
  		position: absolute;
  		top: 50%;
@@ -1871,27 +1863,27 @@
  		height: 10px;
  		animation: floatHearts 2s ease-in-out infinite;
  		}
- 		
  		@keyframes floatHearts {
  		0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
  		100% { transform: translate(-50%, -150%) scale(1.5); opacity: 0; }
  		}
  		</style>
- 		<input type="checkbox" id="modal-toggle">
- 		<label for="modal-toggle" class="love-letter-box">💖 Open the Love Letter 💌</label>
  		
- 		<div class="modal">
- 		<div class="modal-content">
- 		<label for="modal-toggle" class="close">×</label>
+ 		<input type="checkbox" id="popup-toggle">
+ 		<label for="popup-toggle" class="love-letter-box">💖 Open the Love Letter 💌</label>
+ 		
+ 		<div class="love-popup">
+ 		<div class="love-popup-content">
+ 		<label for="popup-toggle" class="close">×</label>
  		<h2>My Love Maria,</h2>
  		<p>
  		Each word I write carries the warmth of my heart for one and only you my Maria. Your smile is my sunrise, and your laughter is my favorite melody. 
  		Thank you for painting my days with love and kindness. Forever yours, under moonlight and stars to the universe. I wanna say that! I love you the most!!!<br>
- 		Always Your's Abir
+ 		Always Yours, Abir
  		</p>
  		</div>
  		</div>
- 		</div>
+</div>
  		
  		<!-- Playlist Section -->
  		<section id="playlist">
