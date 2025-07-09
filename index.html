@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Nothing</title>
+</head>
+<style type="text/css">
+.presence-btn {
+  padding: 0.4rem 0.8rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 20px;
+  background: #e0e0e0;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+.presence-btn.online {
+  background: #d4edda;
+  color: #155724;
+}
+</style>
+<body>
+<!-- Place after your header or birthday section -->
+<div id="presence-widget">
+  <button id="btnAbir"  class="presence-btn">Abir: 🔘 offline</button>
+  <button id="btnMaria" class="presence-btn">Maria: 🔘 offline</button>
+</div>
+</body>
+<script type="text/javascript">
+<script>
+  const API = 'https://yourname.epizy.com/';
+  const btnA = document.getElementById('btnAbir');
+  const btnM = document.getElementById('btnMaria');
+
+  // Poll status every 3s
+  async function fetchStatus() {
+    const res  = await fetch(API+'get_status.php');
+    const data = await res.json();
+    updateBtn(btnA, data.abir);
+    updateBtn(btnM, data.maria);
+  }
+  setInterval(fetchStatus, 3000);
+  fetchStatus();
+
+  // Toggle status on click
+  btnA.addEventListener('click', () => toggle('abir'));
+  btnM.addEventListener('click', () => toggle('maria'));
+
+  async function toggle(user) {
+    const btn   = user==='abir'?btnA:btnM;
+    const state = btn.classList.contains('online') ? 0 : 1;
+    await fetch(`${API}set_status.php?user=${user}&status=${state}`);
+    fetchStatus();
+    alert(`${user.charAt(0).toUpperCase()+user.slice(1)} is now `+
+          (state ? 'online':'offline'));
+  }
+
+  function updateBtn(el, isOnline) {
+    el.classList.toggle('online', isOnline===1);
+    el.textContent = el.id==='btnAbir'
+      ? `Abir: ${isOnline? '🟢 online':'🔘 offline'}`
+      : `Maria: ${isOnline? '🟢 online':'🔘 offline'}`;
+  }
+</script>
+</script>
+</html>
